@@ -18,16 +18,16 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 public class CommerceController {
 
-	 @Autowired
+	@Autowired
 	CommerceServiceImpl service;
-	
-	 @GetMapping("commerces")
-	    public ResponseEntity<List<Commerce>> getAll(){
-	        List<Commerce> commerces = service.getAllCommerce();
-	        if(commerces.isEmpty()) {
-	            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-	        }
 
-	        return new ResponseEntity<>(commerces, HttpStatus.OK);
-	    }
+	@GetMapping("commerces")
+	public ResponseEntity<List<Commerce>> getAll() {
+		List<Commerce> commerces = service.getAllCommerce();
+		if (commerces.isEmpty()) {
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		}
+
+		return new ResponseEntity<>(commerces, HttpStatus.OK);
+	}
 }
