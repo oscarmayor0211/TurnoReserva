@@ -1,0 +1,21 @@
+<form [formGroup]="filterForm" (ngSubmit)="onSubmit()" class="d-flex flex-row align-items-center justify-content-center ">
+    <div class="row mx-2">
+        <div class="col">
+            <label class="col-form-label" for="startDate">Fecha desde:</label>
+        </div>
+        <div class="col">
+            <input class="form-control" type="date" min="{{currentDate | date:'yyyy-MM-dd'}}" name="startDate" id="startDate" formControlName="startDate" required >
+        </div>
+    </div>
+    <div class="row mx-2">
+        <div class="col">
+            <label class="col-form-label" for="endDate">Fecha hasta:</label>
+        </div>
+        <div class="col">
+            <input class="form-control" type="date" name="endDate" id="endDate" formControlName="endDate" required>
+        </div>
+    </div>
+    <div class="row mx-2">
+        <button type="submit" class="btn btn-primary" [disabled]="!filterForm.valid">Buscar</button>
+    </div>
+</form>

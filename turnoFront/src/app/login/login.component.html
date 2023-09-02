@@ -1,0 +1,30 @@
+<div class="container">
+    <br/>
+    
+    
+    <div class="my-4 d-flex flex-column justify-content-center align-items-center">
+        <h1 class="my-4">Turnos Reserva</h1>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" class="my-4">
+            <div class="form-group">
+                <label>Usuario</label>
+                <input [class.is-invalid]="username.invalid && (username.touched || hasSubmitted)" formControlName="username" type="text" class="form-control" placeholder="Escriba test">
+                <div *ngIf="username.invalid && (username.touched || hasSubmitted)">
+                    <small *ngIf="username.hasError('required')" class="text-danger">Usuario Requerido</small>
+                    <small *ngIf="username.errors['pattern']" class="text-danger">No debe tener caracteres especiales</small>
+                </div>
+            </div>
+            
+            <div class="form-group my-4">
+                <label>Password</label>
+                <input [class.is-invalid]="password.invalid && (password.touched || hasSubmitted)" formControlName="password" type="password" class="form-control" id="password" autocomplete="off">
+                <div *ngIf="password.invalid && (password.touched || hasSubmitted)">
+                    <small *ngIf="(password.hasError('required'))" class="text-danger">Password Requerido</small>
+                    <small *ngIf="password.hasError('minlength')" class="text-danger">Password Debe contener mínimo 4 caracteres</small>
+                </div>
+            </div>
+            
+            <input type="submit" class="btn btn-primary" value="Login">
+        </form>
+    </div>
+</div>
+

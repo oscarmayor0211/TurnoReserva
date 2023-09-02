@@ -1,0 +1,77 @@
+<section class="layout">
+    <div class="header">
+        <br/>
+        <div class="d-flex flex-row align-items-center justify-content-end  mx-4">
+            <h5>Bienvenido, <b>{{loggedInUser}}</b> &nbsp;<i class="bi bi-person-circle"></i> </h5>
+        </div>
+        <hr/>
+    </div>
+    <div class="main">
+        <div class="d-flex flex-row align-items-center justify-content-center ">
+            <div class="row my-4">
+                <div class="col-auto">
+                    <label for="commerce" class="col-form-label">Comercio</label>
+                </div>
+                <div class="col-auto">
+                    <select 
+                        [(ngModel)]="selectedCommerce"
+                        (change)="onCommerceChange()" 
+                        id="commerce" 
+                        name="commerce" class="form-select" aria-label="Seleccione un comercio">
+                        <option selected value="0">Selecciona un Comercio</option>
+                        <option *ngFor="let comm of listCommerces" [value]="comm.id">{{comm.name}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row mx-4">
+                <div class="col-auto">
+                    <label for="service" class="col-form-label">Servicio</label>
+                </div>
+                <div class="col-auto">
+                    <select 
+                        [(ngModel)]="selectedService"
+                        id="service" 
+                        name="service" class="form-select" aria-label="Seleccione un Servicio">
+                        <option selected value="0">Selecciona un Servicio</option>
+                        <option *ngFor="let service of listServices" [value]="service.id">{{service.name}}</option>
+                    </select>
+                    
+                </div>
+            </div>
+        </div>
+        <app-filter [selectedService]="selectedService" (filterResults)="onSearchAppointments($event)" ></app-filter>
+
+        <div class="container">
+            <div class="row my-4">
+                <div class="col">
+                    <div *ngIf="listAppointments.length == 0 && isFilteder" class="alert alert-primary" >No hay Citas para el servicio y comercio seleccionados.</div>
+                    <table *ngIf="listAppointments.length != 0" class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Comercio</th>
+                                <th>Servicio</th>
+                                <th>Hora Inicio</th>
+                                <th>Hora Fin</th>
+                                <th>Accion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr #app *ngFor="let app of listAppointments">
+                                <td>{{app.commerce}}</td>
+                                <td>{{app.service}}</td>
+                                <td>{{app.startTime | date:'shortTime' }}</td>
+                                <td>{{app.endTime | date:'shortTime'}}</td>
+                                <td><button (click)="processAppointment(app)" class="btn btn-success">Tomar</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+
+    </div>
+  </section>
+
