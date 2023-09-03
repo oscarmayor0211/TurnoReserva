@@ -17,7 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:4200")
 public class AppointmentController {
 
 	
@@ -53,4 +53,11 @@ public class AppointmentController {
 	        return new ResponseEntity<>(agenda, HttpStatus.OK);
 	    }
 
+	    @PutMapping("/appointment/status/{id}")
+	    public ResponseEntity<Appointment> updateAppointmentStatus(@PathVariable(value = "id") Long appointmentId, @RequestBody Appointment appointment) {
+	    	System.out.println(appointment);
+	       return new ResponseEntity<>(impl.updateAppointmentStatus(appointment), HttpStatus.OK);
+
+
+	    }
 }

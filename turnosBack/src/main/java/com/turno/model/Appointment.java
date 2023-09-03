@@ -30,6 +30,7 @@ public class Appointment {
     @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime endTime;
 
+     
     @Column(name = "status")
     private String status;
 

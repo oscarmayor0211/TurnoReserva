@@ -17,7 +17,7 @@ import com.turno.service.ServiceServiceImpl;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:4200")
 public class ServiceController {
 
 	 @Autowired

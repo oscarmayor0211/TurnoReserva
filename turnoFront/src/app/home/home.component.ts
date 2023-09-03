@@ -27,7 +27,8 @@ export class HomeComponent implements OnInit {
       , () => {
         alertify.error('Acción Cancelada por el usuario')
       });
-
+      console.log(app);
+      
 }
 
   onSearchAppointments(event: any) {

@@ -13,7 +13,9 @@ export class AppoinmentService {
   }
 
   confirmAppointment(app: Appointment) {
-    return this.http.put(this.url + "/appointment/status/" + app.id, {status: "CONFIRMED"});
+    app.status = "CONFIRMED";
+    let Url = this.url + "/appointment/status/" + app.id;
+    return this.http.put(Url,app);
   }
 
   getListAppointments(startDate:string, endDate:string, service:number) {

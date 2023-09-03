@@ -6,5 +6,5 @@ import com.turno.model.Appointment;
 
 public interface AppointmentService {
 	 List<Appointment> findByServiceId(Long serviceId);
-
+	 Appointment updateAppointmentStatus( Appointment appointment);
 }

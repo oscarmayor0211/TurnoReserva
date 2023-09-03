@@ -57,7 +57,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr #app *ngFor="let app of listAppointments">
+                            <tr  *ngFor="let app of listAppointments">
                                 <td>{{app.commerce}}</td>
                                 <td>{{app.service}}</td>
                                 <td>{{app.startTime | date:'shortTime' }}</td>
